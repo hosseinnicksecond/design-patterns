@@ -1,4 +1,4 @@
-package home.train.factory;
+package home.train.factory1;
 
 import home.train.shapes.Rectangle;
 import home.train.shapes.Shape;
