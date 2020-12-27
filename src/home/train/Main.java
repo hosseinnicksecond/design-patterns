@@ -12,8 +12,8 @@ public class Main {
         Shape shape1=abstractFactory.getShape("circle");
         Color color1=abstractFactory.getColor("red");
 
-        assert shape1 != null;
-        assert color1 != null;
+//        assert shape1 != null;
+//        assert color1 != null;
         System.out.println(shape1.draw()+" :: "+color1.fill());
     }
 

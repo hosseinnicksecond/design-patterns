@@ -17,7 +17,7 @@ public class abstractFactory {
             case "CIRCLE" : return new Circle();
             case "RECTANGLE" : return new Rectangle();
             case "SQUARE" : return new Square();
-            default: return null;
+            default: throw new RuntimeException("can't find shape of "+ shapeName);
         }
     }
 
@@ -27,7 +27,7 @@ public class abstractFactory {
             case "RED" : return new Red();
             case "GREEN": return new Green();
             case "BLUE" : return new Blue();
-            default:return null;
+            default: throw new RuntimeException("can't find color of "+ colorName);
         }
     }
 }
