@@ -4,15 +4,16 @@ import home.train.color.Color;
 import home.train.factory.abstractFactory;
 import home.train.shape.Shape;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
 
-        abstractFactory factory= factoryProduct.getAbstractFactory();
 
-        Shape shape1=factory.getShape("circle");
-        Color color1=factory.getColor("red");
+        Shape shape1=abstractFactory.getShape("circle");
+        Color color1=abstractFactory.getColor("red");
 
+        assert shape1 != null;
+        assert color1 != null;
         System.out.println(shape1.draw()+" :: "+color1.fill());
     }
 
