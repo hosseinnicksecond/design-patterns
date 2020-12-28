@@ -1,17 +1,17 @@
 package home.train;
 
-import home.train.singleton.synchronizedSingleton;
+import home.train.singleton.doubleCheckLocking;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        synchronizedSingleton singletonM= synchronizedSingleton.getInstance();
+        doubleCheckLocking singletonM=doubleCheckLocking.getInstance();
         singletonM.setId(3);
         singletonM.setName("main");
 
        Thread thread1= new Thread(() -> {
-           synchronizedSingleton singleton=synchronizedSingleton.getInstance();
+           doubleCheckLocking singleton=doubleCheckLocking.getInstance();
            singleton.setId(1);
            singleton.setName("thread 1");
            System.out.println("instance id :"+ singleton.getId()+"  name : "+singleton.getName());
@@ -21,8 +21,7 @@ public class Main {
        singletonM=null;
 
        Thread thread2= new Thread(() -> {
-           synchronizedSingleton singleton=synchronizedSingleton.getInstance();
-//           System.out.println("yohoo");
+           doubleCheckLocking singleton=doubleCheckLocking.getInstance();
            System.out.println("instance id :"+ singleton.getId()+"  name : "+singleton.getName());
        });
 
