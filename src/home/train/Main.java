@@ -1,16 +1,16 @@
 package home.train;
-import home.train.singleton.Eager;
+import home.train.singleton.billPughSingleton;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Eager singletonM=Eager.getInstance();
+        billPughSingleton singletonM=billPughSingleton.getInstance();
         singletonM.setId(3);
         singletonM.setName("main");
 
        Thread thread1= new Thread(() -> {
-           Eager singleton=Eager.getInstance();
+           billPughSingleton singleton=billPughSingleton.getInstance();
            singleton.setId(1);
            singleton.setName("thread 1");
            System.out.println("instance id :"+ singleton.getId()+"  name : "+singleton.getName());
@@ -20,7 +20,7 @@ public class Main {
        singletonM=null;
 
        Thread thread2= new Thread(() -> {
-           Eager singleton=Eager.getInstance();
+           billPughSingleton singleton=billPughSingleton.getInstance();
            System.out.println("instance id :"+ singleton.getId()+"  name : "+singleton.getName());
        });
 
