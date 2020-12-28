@@ -1,22 +1,33 @@
 package home.train;
 
-import home.train.singleton.Lazy;
+import home.train.singleton.synchronizedSingleton;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Lazy lazy=Lazy.getInstance();
-        lazy.setId(1);
-        lazy.setName("lazy singleton");
+        synchronizedSingleton singletonM= synchronizedSingleton.getInstance();
+        singletonM.setId(3);
+        singletonM.setName("main");
 
-        System.out.println("instance that create first time:  "+
-                lazy+" and id :"+lazy.getId()+" and name : "+lazy.getName());
+       Thread thread1= new Thread(() -> {
+           synchronizedSingleton singleton=synchronizedSingleton.getInstance();
+           singleton.setId(1);
+           singleton.setName("thread 1");
+           System.out.println("instance id :"+ singleton.getId()+"  name : "+singleton.getName());
+       });
 
-        lazy=null;
-        Lazy lazy2= Lazy.getInstance();
-        System.out.println("instance that create first time:  "+
-                lazy2+" and id :"+lazy2.getId()+" and name : "+lazy2.getName());
+        System.out.println("Main id: "+singletonM.getId()+ " name: "+ singletonM.getName());
+       singletonM=null;
+
+       Thread thread2= new Thread(() -> {
+           synchronizedSingleton singleton=synchronizedSingleton.getInstance();
+//           System.out.println("yohoo");
+           System.out.println("instance id :"+ singleton.getId()+"  name : "+singleton.getName());
+       });
+
+       thread1.start();
+       thread2.start();
 
 
     }
